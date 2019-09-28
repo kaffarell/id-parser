@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gabriel/CLionProjects/id_parser/parser.c
+stdio.h
+-
+string.h
+-
+stdlib.h
+-
+parser.h
+/home/gabriel/CLionProjects/id_parser/parser.h
+
+/home/gabriel/CLionProjects/id_parser/parser.h
+stdio.h
+-
+stdlib.h
+-
+
