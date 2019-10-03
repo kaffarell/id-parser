@@ -13,6 +13,8 @@ string.h
 -
 stdlib.h
 -
+math.h
+-
 parser.h
 /home/gabriel/CLionProjects/id_parser/parser.h
 

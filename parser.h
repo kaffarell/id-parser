@@ -5,8 +5,8 @@
 #include<stdlib.h>
 
 FILE *file;
-char* name_list[5];
-char* value_list[5];
+extern char* name_list[5];
+extern char* value_list[5];
 
 void write();
 void read();

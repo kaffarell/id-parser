@@ -10,7 +10,7 @@ int main(){
     printf("input identifier: \n");
     scanf("%s", input);
     result = valueof_int(input);
-    printf("value of id: %d \n", result);
+    printf("value of identifier: %d \n", result);
 
 
     return 0;

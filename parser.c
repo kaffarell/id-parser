@@ -1,10 +1,21 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include<math.h>
 #include"parser.h"
+
+char *name_list[5];
+char *value_list[5];
+
 
 
 FILE init(char *filename, char *mode){
+    //allocate space for arrays
+    for(int i = 0; i < 5; i++){
+        name_list[i] = (char *)malloc(sizeof(char)*10);
+        value_list[i] = (char *)malloc(sizeof(char)*10);
+    }
+
     file = fopen(filename, mode);
     if(file == NULL){
         printf("wrong file\n");
@@ -30,12 +41,12 @@ void read(){
     int counter = 0;
     int equal_index = 0;
     int c = 0;
+    int size = 10;
+    char *string;
+    int bytes_read;
 
     //TODO: count lines and use that as line count
     for(int a = 0; a < 5; a++){
-        int size = 10;
-        char *string;
-        int bytes_read;
         string = (char *) malloc (size);
         bytes_read = getline (&string, (size_t *) &size, file);
 
@@ -58,33 +69,48 @@ void read(){
         }
         value[c] = '\0';
 
-        //FIXME: array assigned here is empty in other function
-        name_list[a] = name;
-        value_list[a] = value;
-        printf("name: %s, value: %s\n", name, value);
+        //copy string to array with strncpy!
+        name_list[a] = strncpy(name_list[a], name, 5);
+        value_list[a] = strncpy(value_list[a], value, 5);
     }
 
 
-    for(int i = 0; i < 5; i++){
-        printf("2name = %s, value = %s \n", name_list[i], value_list[i]);
-    }
+
 }
 
 int valueof_int(char *id_input){
-    int result = 0;
-
-    //output array for test
-    for(int i = 0; i < 5; i++){
-        printf("name: %s\n", name_list[i]);
-    }
+    int char_number;
+    int *zahlen;
+    int a;
+    int result;
 
     for(int i = 0; i < 5; i++){
-        printf("value: %s\n", value_list[i]);
-        printf("%s = %s\n", name_list[i], id_input);
-        /*if(strcmp(name_list[i], id_input)){
-            result = value_list[i];
+        if(strcmp(id_input, name_list[i]) == 0){
+            for(a = 0; a < 5; a++){
+                char_number = value_list[i][a];
+                if((int)char_number >= 48 && (int)char_number <= 57){
+                    zahlen[a] = (int)char_number - 48;
+                } else{
+                    break;
+                }
+            }
+            printf("a: %d\n", a);
+            int c = 0;
+            a = a - 1;
+            //FIXME
+            for(int b = a-1; b >= 0; b--){
+                c = c + 1;
+                printf("%d", c);
+                zahlen[b] = zahlen[b] * pow(10, c);
+            }
+
+            for(int c = 0; c < a; c++){
+                result += zahlen[c];
+            }
+
             return result;
-        }*/
+        }
     }
+    printf("no identifier found\n");
 }
 
