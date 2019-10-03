@@ -94,14 +94,11 @@ int valueof_int(char *id_input){
                     break;
                 }
             }
-            printf("a: %d\n", a);
-            int c = 0;
-            a = a - 1;
-            //FIXME
-            for(int b = a-1; b >= 0; b--){
-                c = c + 1;
-                printf("%d", c);
-                zahlen[b] = zahlen[b] * pow(10, c);
+
+            int counter = a;
+            for (int c = 0; c < a; c++) {
+                counter--;
+                zahlen[c] = zahlen[c] * pow(10, counter);
             }
 
             for(int c = 0; c < a; c++){
