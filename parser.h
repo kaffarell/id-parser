@@ -11,7 +11,7 @@ extern char* value_list[5];
 void write();
 void read();
 int valueof_int(char *id_input);
-
+int get_linecount(char* filename);
 FILE init(char *filename, char *mode);
 
 
