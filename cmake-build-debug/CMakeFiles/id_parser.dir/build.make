@@ -43,10 +43,10 @@ RM = /home/gabriel/Downloads/clion-2019.2.3/bin/cmake/linux/bin/cmake -E remove 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gabriel/CLionProjects/id_parser
+CMAKE_SOURCE_DIR = /home/gabriel/CLionProjects/id-parser
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gabriel/CLionProjects/id_parser/cmake-build-debug
+CMAKE_BINARY_DIR = /home/gabriel/CLionProjects/id-parser/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/id_parser.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/id_parser.dir/flags.make
 
 CMakeFiles/id_parser.dir/main.c.o: CMakeFiles/id_parser.dir/flags.make
 CMakeFiles/id_parser.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabriel/CLionProjects/id_parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/id_parser.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/id_parser.dir/main.c.o   -c /home/gabriel/CLionProjects/id_parser/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/id_parser.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/id_parser.dir/main.c.o   -c /home/gabriel/CLionProjects/id-parser/main.c
 
 CMakeFiles/id_parser.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/id_parser.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabriel/CLionProjects/id_parser/main.c > CMakeFiles/id_parser.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabriel/CLionProjects/id-parser/main.c > CMakeFiles/id_parser.dir/main.c.i
 
 CMakeFiles/id_parser.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/id_parser.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabriel/CLionProjects/id_parser/main.c -o CMakeFiles/id_parser.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabriel/CLionProjects/id-parser/main.c -o CMakeFiles/id_parser.dir/main.c.s
 
 CMakeFiles/id_parser.dir/parser.c.o: CMakeFiles/id_parser.dir/flags.make
 CMakeFiles/id_parser.dir/parser.c.o: ../parser.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabriel/CLionProjects/id_parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/id_parser.dir/parser.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/id_parser.dir/parser.c.o   -c /home/gabriel/CLionProjects/id_parser/parser.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/id_parser.dir/parser.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/id_parser.dir/parser.c.o   -c /home/gabriel/CLionProjects/id-parser/parser.c
 
 CMakeFiles/id_parser.dir/parser.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/id_parser.dir/parser.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabriel/CLionProjects/id_parser/parser.c > CMakeFiles/id_parser.dir/parser.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/gabriel/CLionProjects/id-parser/parser.c > CMakeFiles/id_parser.dir/parser.c.i
 
 CMakeFiles/id_parser.dir/parser.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/id_parser.dir/parser.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabriel/CLionProjects/id_parser/parser.c -o CMakeFiles/id_parser.dir/parser.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/gabriel/CLionProjects/id-parser/parser.c -o CMakeFiles/id_parser.dir/parser.c.s
 
 # Object files for target id_parser
 id_parser_OBJECTS = \
@@ -95,7 +95,7 @@ id_parser: CMakeFiles/id_parser.dir/main.c.o
 id_parser: CMakeFiles/id_parser.dir/parser.c.o
 id_parser: CMakeFiles/id_parser.dir/build.make
 id_parser: CMakeFiles/id_parser.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gabriel/CLionProjects/id_parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable id_parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable id_parser"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/id_parser.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -108,6 +108,6 @@ CMakeFiles/id_parser.dir/clean:
 .PHONY : CMakeFiles/id_parser.dir/clean
 
 CMakeFiles/id_parser.dir/depend:
-	cd /home/gabriel/CLionProjects/id_parser/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gabriel/CLionProjects/id_parser /home/gabriel/CLionProjects/id_parser /home/gabriel/CLionProjects/id_parser/cmake-build-debug /home/gabriel/CLionProjects/id_parser/cmake-build-debug /home/gabriel/CLionProjects/id_parser/cmake-build-debug/CMakeFiles/id_parser.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/gabriel/CLionProjects/id-parser/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/gabriel/CLionProjects/id-parser /home/gabriel/CLionProjects/id-parser /home/gabriel/CLionProjects/id-parser/cmake-build-debug /home/gabriel/CLionProjects/id-parser/cmake-build-debug /home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles/id_parser.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/id_parser.dir/depend
 

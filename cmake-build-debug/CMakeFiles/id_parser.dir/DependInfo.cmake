@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/gabriel/CLionProjects/id_parser/main.c" "/home/gabriel/CLionProjects/id_parser/cmake-build-debug/CMakeFiles/id_parser.dir/main.c.o"
-  "/home/gabriel/CLionProjects/id_parser/parser.c" "/home/gabriel/CLionProjects/id_parser/cmake-build-debug/CMakeFiles/id_parser.dir/parser.c.o"
+  "/home/gabriel/CLionProjects/id-parser/main.c" "/home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles/id_parser.dir/main.c.o"
+  "/home/gabriel/CLionProjects/id-parser/parser.c" "/home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles/id_parser.dir/parser.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

@@ -44,10 +44,10 @@ RM = /home/gabriel/Downloads/clion-2019.2.3/bin/cmake/linux/bin/cmake -E remove 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/gabriel/CLionProjects/id_parser
+CMAKE_SOURCE_DIR = /home/gabriel/CLionProjects/id-parser
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/gabriel/CLionProjects/id_parser/cmake-build-debug
+CMAKE_BINARY_DIR = /home/gabriel/CLionProjects/id-parser/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -74,14 +74,14 @@ preinstall:
 CMakeFiles/id_parser.dir/all:
 	$(MAKE) -f CMakeFiles/id_parser.dir/build.make CMakeFiles/id_parser.dir/depend
 	$(MAKE) -f CMakeFiles/id_parser.dir/build.make CMakeFiles/id_parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gabriel/CLionProjects/id_parser/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target id_parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target id_parser"
 .PHONY : CMakeFiles/id_parser.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/id_parser.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabriel/CLionProjects/id_parser/cmake-build-debug/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/id_parser.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabriel/CLionProjects/id_parser/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/id_parser.dir/rule
 
 # Convenience name for target.
