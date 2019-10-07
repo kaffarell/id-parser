@@ -8,7 +8,7 @@ FILE *file;
 extern char* name_list[5];
 extern char* value_list[5];
 
-void write();
+void write(char* identifier, int value);
 void read();
 int valueof_int(char *id_input);
 int get_linecount(char* filename);

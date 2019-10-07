@@ -7,9 +7,11 @@
 char *name_list[];
 char *value_list[];
 int lines = 0;
+char* filename_global;
 
 
 FILE init(char *filename, char *mode) {
+    filename_global = filename;
     name_list[get_linecount(filename)];
     value_list[get_linecount(filename)];
     lines = get_linecount(filename);
@@ -30,15 +32,33 @@ FILE init(char *filename, char *mode) {
     printf("filename: %s, mode: %s \n", filename, mode);
     if (strcmp(mode, "r") == 0) {
         read();
-    } else if (strcmp(mode, "w") == 0) {
-        write();
+    } else if (strcmp(mode, "a") == 0) {
+        //TODO: maybe input write() directly
     } else {
         printf("error");
+        exit(0);
     }
 }
 
-void write() {
+void write(char* identifier, int value) {
+    FILE *write;
+    char* line = NULL;
+    size_t size = 10;
+    //line = malloc(sizeof(char) * 10);
 
+    printf("got here\n");
+    write = fopen(filename_global, "a");
+    for (int i = 0; i < lines; i++) {
+        if (strcmp(identifier, name_list[i]) == 0) {
+            for(int a = 0; a < i; a++) {
+                getline(&line, &size, write);
+                printf("curr_line: %s \n", line);
+            }
+            getline(&line, &size, write);
+            printf("curr_line: %s \n", line);
+
+        }
+    }
 }
 
 void read() {
