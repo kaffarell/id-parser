@@ -13,6 +13,7 @@ int main(){
     printf("input value\n");
     //scanf("%d", &value);
     write("test", 5);
+    printf("value of id: %d\n", valueof_int("id"));
 
 
     return 0;

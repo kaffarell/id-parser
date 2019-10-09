@@ -2,6 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<math.h>
+#include <errno.h>
 #include"parser.h"
 
 char *name_list[];
@@ -22,9 +23,8 @@ FILE init(char *filename, char *mode) {
     }
 
 
-
     // Open file to read values in read() function
-    file = fopen(filename, mode);
+    file = fopen("/home/gabriel/CLionProjects/id-parser", mode);
     if (file == NULL) {
         printf("wrong file\n");
         exit(0);
@@ -46,17 +46,17 @@ void write(char* identifier, int value) {
     size_t size = 10;
     //line = malloc(sizeof(char) * 10);
 
-    printf("got here\n");
     write = fopen(filename_global, "a");
     for (int i = 0; i < lines; i++) {
         if (strcmp(identifier, name_list[i]) == 0) {
             for(int a = 0; a < i; a++) {
                 getline(&line, &size, write);
                 printf("curr_line: %s \n", line);
+                fclose(write);
             }
             getline(&line, &size, write);
             printf("curr_line: %s \n", line);
-
+            fclose(write);
         }
     }
 }
@@ -68,17 +68,19 @@ void read() {
     char *string;
     int bytes_read;
 
-
+    fseek(file, 0, SEEK_SET);
     for (int a = 0; a < lines; a++) {
         string = (char *) malloc(size);
         bytes_read = getline(&string, (size_t *) &size, file);
 
         // Gets position of '='
         for (int i = 0; i < 10; i++) {
+            printf("string[i] = %c\n", string[i]);
             if (string[i] == '=') {
                 equal_index = i;
             }
         }
+        printf("equal_index: %d\n", equal_index-1);
         // Gets name:
         // Copy substring before '=' to variable name
         strncpy(name, string, equal_index - 1);
@@ -114,7 +116,7 @@ void read() {
 
 int valueof_int(char *id_input) {
     int char_number, counter, result, a;
-    int *zahlen;
+    int *zahlen = NULL;
 
     for (int i = 0; i < lines; i++) {
         if (strcmp(id_input, name_list[i]) == 0) {
@@ -146,17 +148,24 @@ int valueof_int(char *id_input) {
 }
 
 int get_linecount(char *filename) {
-    // Get number of lines
-    printf("filename: %s\n", filename);
-    FILE *countlines_file = fopen(filename, "r");
+    int c = 0;
     lines = 0;
     lines++;
-    int c = 0;
-    fseek(countlines_file, 0, SEEK_SET);
+
+    // Get number of lines
+    //fclose(file);
+    FILE *countline_file;
+    countline_file = fopen("/home/gabriel/CLionProjects/id-parser/test.id", "r");
+
+    if( countline_file == NULL ) {
+        printf("Error %d \n", errno);
+        perror("test.id");
+    }
+
     while (1) {
-        c = fgetc(countlines_file);
+        c = fgetc(countline_file);
         if (c == -1) {
-            fclose(countlines_file);
+            fclose(countline_file);
             return lines - 1;
         }
         if (c == 10) {
