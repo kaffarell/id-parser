@@ -5,7 +5,8 @@ A Parser for .id files which can store any type of data like age and names.
 External file with variable names, so the customer can safely and easily set deeper settings for your product.   
 
 ## How to use
-Example on how to use the parser:
+### Getting Values:
+Example on how to read with the parser:
 
     #include<stdio.h>  
     #include"parser.h"  
@@ -29,6 +30,9 @@ Example on how to use the parser:
 * Step 3:
 	* get value ( f.e.: result = valueof_int("age") ) = value of identifier age is now stored in the integer result
 
+### Writing values
+Same steps as above but open the file with init(filename, "w") and use the function write().
+The function write(char* identifier, int value), takes the identifier as a char array and the new value as a integer. The value will than be written to the identifier specified.
 ## Id-files  
 ### Structure
 `identifier = value`
