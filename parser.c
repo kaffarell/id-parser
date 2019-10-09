@@ -12,9 +12,9 @@ char* filename_global;
 
 FILE init(char *filename, char *mode) {
     filename_global = filename;
-    name_list[get_linecount(filename)];
-    value_list[get_linecount(filename)];
     lines = get_linecount(filename);
+    name_list[lines];
+    value_list[lines];
     // Allocate space for arrays
     for (int i = 0; i < lines; i++) {
         name_list[i] = (char *) malloc(sizeof(char) * 10);
@@ -147,14 +147,16 @@ int valueof_int(char *id_input) {
 
 int get_linecount(char *filename) {
     // Get number of lines
-    FILE *fp = fopen(filename, "r");
+    printf("filename: %s\n", filename);
+    FILE *countlines_file = fopen(filename, "r");
     lines = 0;
     lines++;
     int c = 0;
+    fseek(countlines_file, 0, SEEK_SET);
     while (1) {
-        c = fgetc(fp);
+        c = fgetc(countlines_file);
         if (c == -1) {
-            fclose(fp);
+            fclose(countlines_file);
             return lines - 1;
         }
         if (c == 10) {
