@@ -66,11 +66,12 @@ void read() {
     char *name = malloc(4);
     int equal_index = 0, c = 0, size = 10;
     char *string;
-    int bytes_read;
+    int bytes_read = 0;
 
     fseek(file, 0, SEEK_SET);
     for (int a = 0; a < lines; a++) {
         string = (char *) malloc(size);
+        //FIXME: getline returns -1
         bytes_read = getline(&string, (size_t *) &size, file);
 
         // Gets position of '='
@@ -87,7 +88,6 @@ void read() {
 
         // Gets value:
         c = 0;
-        bytes_read--;
         while (c < 2) {
             value[c] = string[(equal_index + 3) + c - 1];
             c++;
