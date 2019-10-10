@@ -59,13 +59,15 @@ void read() {
     char *name = malloc(4);
     int equal_index = 0, c = 0, size = 10;
     char *string;
+    //string = (char *) malloc(size);
 
     fseek( file, 1, SEEK_SET );
     for(int i = 0; i < 10; i++){
-        printf("char = %d\n", fgetc(file));
+        fgets(string, 60, file);
+        printf("char = %s\n", string);
     }
     for (int a = 0; a < lines; a++) {
-        string = (char *) malloc(size);
+        //string = (char *) malloc(size);
         //FIXME: getline and fgetc not reading file
         getline(&string, (size_t *) &size, file);
         printf("string: %s\n", string);
