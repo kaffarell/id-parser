@@ -7,7 +7,7 @@ int main(){
     int value;
 
     FILE id;
-    id = init("/home/gabriel/CLionProjects/id_parser/test.id", "r");
+    id = init("/home/gabriel/CLionProjects/id_parser/test.id");
     printf("input identifier: \n");
     //scanf("%s", input);
     printf("input value\n");

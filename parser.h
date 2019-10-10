@@ -32,10 +32,10 @@ Gets used internally, not intendet to be used.
 int get_linecount(char* filename);
 
 /*
-Expects filename and file opening mode (r, w, etc..),
-initializes the main file pointer and calls read().
+Expects filename, file mode set to read (r) because the main file pointer
+is only used to read files in read(), calls read() automatically.
 */
-FILE init(char *filename, char *mode);
+FILE init(char *filename);
 
 
 

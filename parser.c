@@ -11,7 +11,7 @@ int lines = 0;
 char* filename_global;
 
 
-FILE init(char *filename, char *mode) {
+FILE init(char *filename) {
     filename_global = filename;
     lines = get_linecount(filename);
     name_list[lines];
@@ -24,20 +24,13 @@ FILE init(char *filename, char *mode) {
 
 
     // Open file to read values in read() function
-    file = fopen("/home/gabriel/CLionProjects/id-parser", mode);
+    file = fopen("/home/gabriel/CLionProjects/id-parser", "r");
+    //Check if file has been opened
     if (file == NULL) {
         printf("wrong file\n");
         exit(0);
     }
-    printf("filename: %s, mode: %s \n", filename, mode);
-    if (strcmp(mode, "r") == 0) {
-        read();
-    } else if (strcmp(mode, "a") == 0) {
-        //TODO: maybe input write() directly
-    } else {
-        printf("error");
-        exit(0);
-    }
+    read();
 }
 
 void write(char* identifier, int value) {
@@ -66,13 +59,16 @@ void read() {
     char *name = malloc(4);
     int equal_index = 0, c = 0, size = 10;
     char *string;
-    int bytes_read = 0;
 
-    fseek(file, 0, SEEK_SET);
+    fseek( file, 1, SEEK_SET );
+    for(int i = 0; i < 10; i++){
+        printf("char = %d\n", fgetc(file));
+    }
     for (int a = 0; a < lines; a++) {
         string = (char *) malloc(size);
-        //FIXME: getline returns -1
-        bytes_read = getline(&string, (size_t *) &size, file);
+        //FIXME: getline and fgetc not reading file
+        getline(&string, (size_t *) &size, file);
+        printf("string: %s\n", string);
 
         // Gets position of '='
         for (int i = 0; i < 10; i++) {
