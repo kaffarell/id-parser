@@ -8,7 +8,7 @@
 char *name_list[];
 char *value_list[];
 int lines = 0;
-char* filename_global;
+char *filename_global;
 
 
 FILE init(char filename[64]) {
@@ -36,25 +36,30 @@ FILE init(char filename[64]) {
 }
 
 void write(char* identifier, int value) {
-    //File pointer to write value to file
+    //File pointer to write whole array to file
     FILE *write;
-    write = fopen(filename_global, "a");
-
-    FILE *read_writefunc;
-    read_writefunc = fopen(filename_global, "r");
 
     char* line = NULL;
     size_t size = 10;
-    //line = malloc(sizeof(char) * 10);
 
-    /*
+
     for (int i = 0; i < lines; i++) {
         if (strcmp(identifier, name_list[i]) == 0) {
-            getline(&line, &size, read_writefunc);
-
+            sprintf(value_list[i], "%d", value);
         }
     }
-     */
+    //Goes in write mode and cleares file
+    write = fopen(filename_global, "wb");
+    //Test if file has been opened correctly
+    if(write == NULL){
+        printf("error opening file\n");
+        exit(0);
+    }
+
+    for(int c = 0; c < lines; c++){
+        fprintf(write, "%s = %s\n", name_list[c], value_list[c]);
+    }
+
 }
 
 void read() {
@@ -98,19 +103,13 @@ void read() {
     }
     fclose(file);
 
-    /*test
-    for(int i = 0; i < lines; i++){
-        printf("name: %s, value: %s \n", name_list[i], value_list[i]);
-    }
-     */
-
 
 
 }
 
 int valueof_int(char *id_input) {
-    int char_number, counter, result, a;
-    int *zahlen = NULL;
+    int char_number = 0, counter = 0, result = 0, a = 0;
+    int *zahlen = (int *) malloc(sizeof(char) * 10);;
 
     for (int i = 0; i < lines; i++) {
         if (strcmp(id_input, name_list[i]) == 0) {
