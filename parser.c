@@ -14,15 +14,15 @@ char *filename_global;
 FILE init(char filename[64]) {
     // Open file to read values in read() function
     file = fopen(filename, "rb");
-    //Check if file has been opened
+    // Check if file has been opened
     if (file == NULL) {
         printf("wrong file\n");
         exit(0);
     }
     filename_global = filename;
-    //Get total linecount of file
+    // Get total linecount of file
     lines = get_linecount(filename);
-    //Set size of arrays according to linecount
+    // Set size of arrays according to linecount
     name_list[lines];
     value_list[lines];
 
@@ -36,29 +36,29 @@ FILE init(char filename[64]) {
 }
 
 void write(char* identifier, int value) {
-    //File pointer to write whole array to file
+    // File pointer to write whole array to file
     FILE *write;
 
-    char* line = NULL;
-    size_t size = 10;
-
-
+    // Searches in array for identifier and replaces their value
     for (int i = 0; i < lines; i++) {
         if (strcmp(identifier, name_list[i]) == 0) {
             sprintf(value_list[i], "%d", value);
         }
     }
-    //Goes in write mode and cleares file
+    // Goes in write mode and cleares file
     write = fopen(filename_global, "wb");
-    //Test if file has been opened correctly
+
+    // Test if file has been opened correctly
     if(write == NULL){
         printf("error opening file\n");
         exit(0);
     }
 
+    // Write whole array to file
     for(int c = 0; c < lines; c++){
         fprintf(write, "%s = %s\n", name_list[c], value_list[c]);
     }
+    fclose(write);
 
 }
 
@@ -67,12 +67,11 @@ void read() {
     char *name = malloc(4);
     int equal_index = 0, c = 0, size = 10;
     char *string;
-    //string = (char *) malloc(size);
-    //Set cursor to top
+
+    // Set cursor to top
     fseek( file, 0, SEEK_SET );
 
     for (int a = 0; a < lines; a++) {
-        //string = (char *) malloc(size);
         getline(&string, (size_t *) &size, file);
 
         // Gets position of '='
@@ -93,7 +92,7 @@ void read() {
         }
         value[c] = '\0';
 
-        // Copy string to array with strncpy!
+        // Copy string to array with strncpy
         name_list[a] = strncpy(name_list[a], name, 5);
         value_list[a] = strncpy(value_list[a], value, 5);
 
@@ -146,7 +145,6 @@ int get_linecount(char *filename) {
     lines++;
 
     // Get number of lines
-    //fclose(file);
     FILE *countline_file;
     countline_file = fopen("/home/gabriel/CLionProjects/id-parser/test.id", "r");
 

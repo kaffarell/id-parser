@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/gabriel/CLionProjects/id-parser/main.c
+stdio.h
+-
+parser.h
+/home/gabriel/CLionProjects/id-parser/parser.h
+
 /home/gabriel/CLionProjects/id-parser/parser.c
 stdio.h
 -
