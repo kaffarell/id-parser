@@ -1,7 +1,7 @@
 
 
 # Parser for id-files
-Supports at the moment only read and store in variable functionality.   
+The parser can get values and store them in variables and overwrite values.
 A Parser for .id files which can store any type of data like age and names.
 External file with variable names, so the customer can safely and easily set deeper settings for your product.   
 
