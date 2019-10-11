@@ -14,44 +14,47 @@ char* filename_global;
 FILE init(char filename[64]) {
     // Open file to read values in read() function
     file = fopen(filename, "rb");
+    //Check if file has been opened
+    if (file == NULL) {
+        printf("wrong file\n");
+        exit(0);
+    }
     filename_global = filename;
+    //Get total linecount of file
     lines = get_linecount(filename);
+    //Set size of arrays according to linecount
     name_list[lines];
     value_list[lines];
+
     // Allocate space for arrays
     for (int i = 0; i < lines; i++) {
         name_list[i] = (char *) malloc(sizeof(char) * 10);
         value_list[i] = (char *) malloc(sizeof(char) * 10);
     }
 
-
-    //Check if file has been opened
-    if (file == NULL) {
-        printf("wrong file\n");
-        exit(0);
-    }
     read();
 }
 
 void write(char* identifier, int value) {
+    //File pointer to write value to file
     FILE *write;
+    write = fopen(filename_global, "a");
+
+    FILE *read_writefunc;
+    read_writefunc = fopen(filename_global, "r");
+
     char* line = NULL;
     size_t size = 10;
     //line = malloc(sizeof(char) * 10);
 
-    write = fopen(filename_global, "a");
+    /*
     for (int i = 0; i < lines; i++) {
         if (strcmp(identifier, name_list[i]) == 0) {
-            for(int a = 0; a < i; a++) {
-                getline(&line, &size, write);
-                printf("curr_line: %s \n", line);
-                fclose(write);
-            }
-            getline(&line, &size, write);
-            printf("curr_line: %s \n", line);
-            fclose(write);
+            getline(&line, &size, read_writefunc);
+
         }
     }
+     */
 }
 
 void read() {
@@ -61,23 +64,18 @@ void read() {
     char *string;
     //string = (char *) malloc(size);
     //Set cursor to top
-    fseek( file, 1, SEEK_SET );
-    for(int i = 0; i < 10; i++){
-        printf("char = %d\n",fgetc(file));
-    }
+    fseek( file, 0, SEEK_SET );
+
     for (int a = 0; a < lines; a++) {
         //string = (char *) malloc(size);
         getline(&string, (size_t *) &size, file);
-        printf("string: %s\n", string);
 
         // Gets position of '='
         for (int i = 0; i < 10; i++) {
-            printf("string[i] = %c\n", string[i]);
             if (string[i] == '=') {
                 equal_index = i;
             }
         }
-        printf("equal_index: %d\n", equal_index-1);
         // Gets name:
         // Copy substring before '=' to variable name
         strncpy(name, string, equal_index - 1);
