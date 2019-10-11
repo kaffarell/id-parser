@@ -19,10 +19,10 @@ Example on how to read with the parser:
         FILE id;  
         id = init("/home/gabriel/CLionProjects/id_parser/test.id");  
         printf("input identifier: \n");  
-      	scanf("%s", input);  
-      	result = valueof_int(input);  
-      	printf("value of identifier: %d \n", result);  
-     	return 0;  
+        scanf("%s", input);  
+        result = valueof_int(input);  
+        printf("value of identifier: %d \n", result);  
+        return 0;  
     }
  * Step 1:
 	 * create FILE object ( f.e.: FILE id; )
