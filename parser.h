@@ -5,6 +5,7 @@
 #include<stdlib.h>
 
 FILE *file;
+
 //Lists of id's in file
 extern char* name_list[5];
 extern char* value_list[5];
@@ -35,7 +36,7 @@ int get_linecount(char* filename);
 Expects filename, file mode set to read (r) because the main file pointer
 is only used to read files in read(), calls read() automatically.
 */
-FILE init(char *filename);
+FILE init(char filename[64]);
 
 
 

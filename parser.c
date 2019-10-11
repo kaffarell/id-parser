@@ -11,7 +11,9 @@ int lines = 0;
 char* filename_global;
 
 
-FILE init(char *filename) {
+FILE init(char filename[64]) {
+    // Open file to read values in read() function
+    file = fopen(filename, "rb");
     filename_global = filename;
     lines = get_linecount(filename);
     name_list[lines];
@@ -23,8 +25,6 @@ FILE init(char *filename) {
     }
 
 
-    // Open file to read values in read() function
-    file = fopen("/home/gabriel/CLionProjects/id-parser", "r");
     //Check if file has been opened
     if (file == NULL) {
         printf("wrong file\n");
@@ -60,15 +60,13 @@ void read() {
     int equal_index = 0, c = 0, size = 10;
     char *string;
     //string = (char *) malloc(size);
-
+    //Set cursor to top
     fseek( file, 1, SEEK_SET );
     for(int i = 0; i < 10; i++){
-        fgets(string, 60, file);
-        printf("char = %s\n", string);
+        printf("char = %d\n",fgetc(file));
     }
     for (int a = 0; a < lines; a++) {
         //string = (char *) malloc(size);
-        //FIXME: getline and fgetc not reading file
         getline(&string, (size_t *) &size, file);
         printf("string: %s\n", string);
 
