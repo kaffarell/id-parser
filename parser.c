@@ -86,7 +86,7 @@ void read() {
 
         // Gets value:
         c = 0;
-        while (c < 2) {
+        while (string[(equal_index + 3) + c - 1] != 10) {
             value[c] = string[(equal_index + 3) + c - 1];
             c++;
         }
@@ -95,6 +95,8 @@ void read() {
         // Copy string to array with strncpy
         name_list[a] = strncpy(name_list[a], name, 5);
         value_list[a] = strncpy(value_list[a], value, 5);
+
+        printf("value: %s\n", value_list[a]);
 
         // Clearing arrays to not get appended pieces when using shorter name after longer name
         memset(&name[0], 0, sizeof(name));
@@ -122,6 +124,8 @@ int valueof_int(char *id_input) {
                     break;
                 }
             }
+
+
             // Making the second number * 10 and add them to get integer
             counter = a;
             for (int c = 0; c < a; c++) {
