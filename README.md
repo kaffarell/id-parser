@@ -1,4 +1,5 @@
 
+
 # Parser for id-files
 Supports at the moment only read and store in variable functionality.   
 A Parser for .id files which can store any type of data like age and names.
@@ -16,7 +17,7 @@ Example on how to read with the parser:
 	char* input;  
       
 	FILE id;  
-	id = init("/home/gabriel/CLionProjects/id_parser/test.id", "r");  
+	id = init("/home/gabriel/CLionProjects/id_parser/test.id");  
 	printf("input identifier: \n");  
       	scanf("%s", input);  
       	result = valueof_int(input);  
@@ -26,18 +27,22 @@ Example on how to read with the parser:
  * Step 1:
 	 * create FILE object ( f.e.: FILE id; )
 * Step 2:
-	* init the object with the file name (or path) and the read:'r' or write:'w' mode ( f.e.: id = init("test.id", "r") )
+	* init the object with the file name (or path) ( f.e.: id = init("test.id") )
 * Step 3:
 	* get value ( f.e.: result = valueof_int("age") ) = value of identifier age is now stored in the integer result
 
 ### Writing values
-Same steps as above but open the file with init(filename, "w") and use the function write().
+Same steps as above but use the function write().
 The function write(char* identifier, int value), takes the identifier as a char array and the new value as a integer. The value will than be written to the identifier specified.
+
+    write("id", 5);
+
+
 ## Id-files  
 ### Structure
 `identifier = value`
-The first argument is a char* which represents the identifier or tag. Later you will also get the value by calling this
- identifier. The value can be a any integer. Support for strings or chars is coming!  
+The first argument is a char* which represents the identifier or tag. In the code you will also get the value by calling this
+ identifier. The value can only be a integer at the moment. Support for strings or chars is coming!  
 
 
 ### Example of id-files
