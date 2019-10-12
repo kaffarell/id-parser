@@ -10,7 +10,7 @@ FILE *file;
 extern char* name_list[5];
 extern char* value_list[5];
 
-char* actual_version = "0.2.2";
+char* actual_version;
 
 /*
 Write int values to the speciefied identifier
@@ -44,7 +44,7 @@ FILE init(char filename[64]);
 Not intendet to be used, gets used internally to check if id-file
 version is same as parser version.
  */
-int version_check(char* string);
+void version_check(char* string);
 
 
 

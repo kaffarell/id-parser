@@ -9,6 +9,7 @@ char *name_list[];
 char *value_list[];
 int lines = 0;
 char *filename_global;
+char* actual_version =  "0.2.2";
 
 
 FILE init(char filename[64]) {
@@ -77,10 +78,7 @@ void read() {
         // If line is version tag then call version check
         if (string[0] == '>') {
             // Check if version is up to date
-            if(version_check(string) == -1){
-                printf("error - please update the parser\n");
-                exit(0);
-            }
+            version_check(string);
         }else if(string[0] == 10){
             continue;
         }else{
@@ -180,7 +178,7 @@ int get_linecount(char *filename) {
     }
 }
 
-int version_check(char* string){
+void version_check(char* string){
     char version_string[5];
 
     printf("string: %s\n", string);
@@ -192,11 +190,11 @@ int version_check(char* string){
             }
         }
     }
-    printf("version: %s\n", version_string);
-    if(strcmp(actual_version, version_string) == 0){
-        return 0;
-    }else{
-        return -1;
+    if(strcmp(actual_version, version_string) == 1){
+        printf("error - update parser or file\n");
+        printf("parser_version:%s\n", actual_version);
+        printf("id-file_version:%s\n", version_string);
+        exit(0);
     }
 }
 
