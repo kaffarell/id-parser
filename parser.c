@@ -96,7 +96,6 @@ void read() {
         name_list[a] = strncpy(name_list[a], name, 5);
         value_list[a] = strncpy(value_list[a], value, 5);
 
-        printf("value: %s\n", value_list[a]);
 
         // Clearing arrays to not get appended pieces when using shorter name after longer name
         memset(&name[0], 0, sizeof(name));
@@ -150,11 +149,11 @@ int get_linecount(char *filename) {
 
     // Get number of lines
     FILE *countline_file;
-    countline_file = fopen("/home/gabriel/CLionProjects/id-parser/test.id", "r");
+    countline_file = fopen(filename, "r");
 
     if( countline_file == NULL ) {
         printf("Error %d \n", errno);
-        perror("test.id");
+        exit(0);
     }
 
     while (1) {
