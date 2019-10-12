@@ -6,10 +6,11 @@
 
 FILE *file;
 
-//Lists of id's in file
+// Lists of id's in file
 extern char* name_list[5];
 extern char* value_list[5];
 
+// Stores the actual version number
 char* actual_version;
 
 /*
