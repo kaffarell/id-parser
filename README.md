@@ -1,5 +1,6 @@
 
 
+
 # Parser for id-files
 The parser can get values and store them in variables and overwrite values.
 A Parser for .id files which can store any type of data like age and names.
@@ -40,7 +41,10 @@ The function write(char* identifier, int value), takes the identifier as a char 
 
 ## Id-files  
 ### Structure
-`identifier = value`
+The first tag of the id file is the `>version:<version number>`.  
+Examples: `>version:0.3.1`, `>version:0.2.2`.  
+The values are stored as followed:  
+`identifier = value`  
 The first argument is a char* which represents the identifier or tag. In the code you will also get the value by calling this
  identifier. The value can only be a integer at the moment. Support for strings or chars is coming!  
 
@@ -48,12 +52,16 @@ The first argument is a char* which represents the identifier or tag. In the cod
 ### Example of id-files
 File: personal.id
 
+    >version:0.3.1
+    
     min_age = 18
     max_age = 99
     pass_number = 1945
     health_card_number = 4576
 File: constants.id
 
+    >version:0.2.2
+    
     pi = 3141
     e = 27
     c_speed = 2997
