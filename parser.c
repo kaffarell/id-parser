@@ -9,7 +9,7 @@ char *name_list[];
 char *value_list[];
 int lines = 0;
 char *filename_global;
-char* actual_version =  "0.2.2";
+char* actual_version =  "0.3.0";
 
 
 FILE init(char filename[64]) {
