@@ -189,6 +189,7 @@ int get_linecount(char *filename) {
 void version_check(char* string){
     char version_string[5];
 
+    // Read versions in
     for(int i = 0; i < 11; i++){
         if(string[i] == 58){
             i++;
@@ -197,6 +198,7 @@ void version_check(char* string){
             }
         }
     }
+    // If version is not the same, output versions
     if(strcmp(actual_version, version_string) == 1){
         printf("error - update parser or file\n");
         printf("parser_version:%s\n", actual_version);
