@@ -72,34 +72,45 @@ void read() {
     fseek( file, 0, SEEK_SET );
 
     for (int a = 0; a < lines; a++) {
+        string = (char *) malloc(sizeof(char) * 10);
         getline(&string, (size_t *) &size, file);
-
-        // Gets position of '='
-        for (int i = 0; i < 10; i++) {
-            if (string[i] == '=') {
-                equal_index = i;
+        // If line is version tag then call version check
+        if (string[0] == '>') {
+            // Check if version is up to date
+            if(version_check(string) == -1){
+                printf("error - please update the parser\n");
+                exit(0);
             }
+        }else if(string[0] == 10){
+            continue;
+        }else{
+            // Gets position of '='
+            for (int i = 0; i < 10; i++) {
+                if (string[i] == '=') {
+                    equal_index = i;
+                }
+            }
+            // Gets name:
+            // Copy substring before '=' to variable name
+            strncpy(name, string, equal_index - 1);
+
+            // Gets value:
+            c = 0;
+            while (string[(equal_index + 3) + c - 1] != 10) {
+                value[c] = string[(equal_index + 3) + c - 1];
+                c++;
+            }
+            value[c] = '\0';
+
+            // Copy string to array with strncpy
+            name_list[a] = strncpy(name_list[a], name, 5);
+            value_list[a] = strncpy(value_list[a], value, 5);
+
+
+            // Clearing arrays to not get appended pieces when using shorter name after longer name
+            memset(&name[0], 0, sizeof(name));
+            memset(&value[0], 0, sizeof(value));
         }
-        // Gets name:
-        // Copy substring before '=' to variable name
-        strncpy(name, string, equal_index - 1);
-
-        // Gets value:
-        c = 0;
-        while (string[(equal_index + 3) + c - 1] != 10) {
-            value[c] = string[(equal_index + 3) + c - 1];
-            c++;
-        }
-        value[c] = '\0';
-
-        // Copy string to array with strncpy
-        name_list[a] = strncpy(name_list[a], name, 5);
-        value_list[a] = strncpy(value_list[a], value, 5);
-
-
-        // Clearing arrays to not get appended pieces when using shorter name after longer name
-        memset(&name[0], 0, sizeof(name));
-        memset(&value[0], 0, sizeof(value));
     }
     fclose(file);
 
@@ -109,7 +120,7 @@ void read() {
 
 int valueof_int(char *id_input) {
     int char_number = 0, counter = 0, result = 0, a = 0;
-    int *zahlen = (int *) malloc(sizeof(char) * 10);;
+    int *zahlen = (int *) malloc(sizeof(int) * 10);
 
     for (int i = 0; i < lines; i++) {
         if (strcmp(id_input, name_list[i]) == 0) {
@@ -166,6 +177,26 @@ int get_linecount(char *filename) {
             lines++;
         }
 
+    }
+}
+
+int version_check(char* string){
+    char version_string[5];
+
+    printf("string: %s\n", string);
+    for(int i = 0; i < 11; i++){
+        if(string[i] == 58){
+            i++;
+            for(int a = i; a < 14; a++){
+                version_string[a-i] = string[a];
+            }
+        }
+    }
+    printf("version: %s\n", version_string);
+    if(strcmp(actual_version, version_string) == 0){
+        return 0;
+    }else{
+        return -1;
     }
 }
 
