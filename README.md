@@ -1,7 +1,7 @@
 
 
 # Parser for id-files
-Supports at the moment only read and store in variable functionality.   
+The parser can get values and store them in variables and overwrite values.
 A Parser for .id files which can store any type of data like age and names.
 External file with variable names, so the customer can safely and easily set deeper settings for your product.   
 
@@ -13,16 +13,16 @@ Example on how to read with the parser:
     #include"parser.h"  
       
     int main(){  
-	int result;  
-	char* input;  
+        int result;  
+        char* input;  
       
-	FILE id;  
-	id = init("/home/gabriel/CLionProjects/id_parser/test.id");  
-	printf("input identifier: \n");  
-      	scanf("%s", input);  
-      	result = valueof_int(input);  
-      	printf("value of identifier: %d \n", result);  
-     	return 0;  
+        FILE id;  
+        id = init("/home/gabriel/CLionProjects/id_parser/test.id");  
+        printf("input identifier: \n");  
+        scanf("%s", input);  
+        result = valueof_int(input);  
+        printf("value of identifier: %d \n", result);  
+        return 0;  
     }
  * Step 1:
 	 * create FILE object ( f.e.: FILE id; )
@@ -50,10 +50,10 @@ File: personal.id
 
     min_age = 18
     max_age = 99
-    pass_number = 194578
-    health_card_number = 457683
+    pass_number = 1945
+    health_card_number = 4576
 File: constants.id
 
-    pi = 31415
+    pi = 3141
     e = 27
-    c_speed = 299792
+    c_speed = 2997
