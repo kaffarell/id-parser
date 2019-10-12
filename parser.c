@@ -55,9 +55,14 @@ void write(char* identifier, int value) {
         exit(0);
     }
 
+    // Write version tag with actual version
+    fprintf(write, ">version:%s\n\n", actual_version);
     // Write whole array to file
     for(int c = 0; c < lines; c++){
-        fprintf(write, "%s = %s\n", name_list[c], value_list[c]);
+        // Write array if not empty due to comments or tags
+        if(name_list[c] != "" && value_list[c] != 0) {
+            fprintf(write, "%s = %s\n", name_list[c], value_list[c]);
+        }
     }
     fclose(write);
 
@@ -74,12 +79,20 @@ void read() {
 
     for (int a = 0; a < lines; a++) {
         string = (char *) malloc(sizeof(char) * 10);
+        // Clearing arrays to not get appended pieces when using shorter name after longer name
+        memset(&name[0], 0, sizeof(name));
+        memset(&value[0], 0, sizeof(value));
         getline(&string, (size_t *) &size, file);
         // If line is version tag then call version check
         if (string[0] == '>') {
             // Check if version is up to date
             version_check(string);
+            name_list[a] = "";
+            value_list[a] = "";
+            continue;
         }else if(string[0] == 10){
+            name_list[a] = "";
+            value_list[a] = "";
             continue;
         }else{
             // Gets position of '='
@@ -104,15 +117,10 @@ void read() {
             name_list[a] = strncpy(name_list[a], name, 5);
             value_list[a] = strncpy(value_list[a], value, 5);
 
-
-            // Clearing arrays to not get appended pieces when using shorter name after longer name
-            memset(&name[0], 0, sizeof(name));
-            memset(&value[0], 0, sizeof(value));
         }
+
     }
     fclose(file);
-
-
 
 }
 
@@ -181,7 +189,6 @@ int get_linecount(char *filename) {
 void version_check(char* string){
     char version_string[5];
 
-    printf("string: %s\n", string);
     for(int i = 0; i < 11; i++){
         if(string[i] == 58){
             i++;
