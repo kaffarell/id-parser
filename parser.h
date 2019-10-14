@@ -31,6 +31,11 @@ identifier.
 int valueof_int(char *id_input);
 
 /*
+Call this function to get a value as a string.
+ */
+char* valueof_string(char *id_input);
+
+/*
 Gets used internally, not intendet to be used.
  */
 int get_linecount(char* filename);

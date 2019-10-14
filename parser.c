@@ -114,8 +114,8 @@ void read() {
             value[c] = '\0';
 
             // Copy string to array with strncpy
-            name_list[a] = strncpy(name_list[a], name, 5);
-            value_list[a] = strncpy(value_list[a], value, 5);
+            name_list[a] = strcpy(name_list[a], name);
+            value_list[a] = strcpy(value_list[a], value);
 
         }
 
@@ -159,6 +159,14 @@ int valueof_int(char *id_input) {
     return -1;
 }
 
+char* valueof_string(char *id_input){
+    for (int i = 0; i < lines; i++) {
+        if (strcmp(id_input, name_list[i]) == 0) {
+            return value_list[i];
+        }
+    }
+}
+
 int get_linecount(char *filename) {
     int c = 0;
     lines = 0;
@@ -199,7 +207,7 @@ void version_check(char* string){
         }
     }
     // If version is not the same, output versions
-    if(strcmp(actual_version, version_string) == 1){
+    if(!(strcmp(actual_version, version_string) == 0)){
         printf("error - update parser or file\n");
         printf("parser_version:%s\n", actual_version);
         printf("id-file_version:%s\n", version_string);
