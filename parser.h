@@ -36,6 +36,11 @@ Call this function to get a value as a string.
 char* valueof_string(char *id_input);
 
 /*
+Returns the value of identifier (id_input) as a float.
+ */
+float valueof_float(char *id_input);
+
+/*
 Gets used internally, not intendet to be used.
  */
 int get_linecount(char* filename);

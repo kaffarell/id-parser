@@ -133,7 +133,7 @@ int valueof_int(char *id_input) {
             // Convert number from char* to integer
             for (a = 0; a < 5; a++) {
                 char_number = value_list[i][a];
-                if ((int) char_number >= 48 && (int) char_number <= 57) {
+                if (((int) char_number >= 48 && (int) char_number <= 57)) {
                     // Checking if char is a integer trough ascii and assigning to variable
                     zahlen[a] = (int) char_number - 48;
                 } else {
@@ -166,6 +166,41 @@ char* valueof_string(char *id_input){
         }
     }
 }
+
+float valueof_float(char *id_input){
+    int char_number = 0, counter = 0, result = 0, a = 0;
+    int *zahlen = (int *) malloc(sizeof(int) * 10);
+
+    for (int i = 0; i < lines; i++) {
+        if (strcmp(id_input, name_list[i]) == 0) {
+            // Convert number from char* to integer
+            for (a = 0; a < 5; a++) {
+                char_number = value_list[i][a];
+                if (((int) char_number >= 48 && (int) char_number <= 57)) {
+                    // Checking if char is a integer trough ascii and assigning to variable
+                    zahlen[a] = (int) char_number - 48;
+                } else {
+                    break;
+                }
+            }
+
+
+            // Making the second number * 10 and add them to get integer
+            counter = a;
+            for (int c = 0; c < a; c++) {
+                counter--;
+                zahlen[c] = zahlen[c] * pow(10, counter);
+            }
+            // Sum all integer in array
+            for (int c = 0; c < a; c++) {
+                result += zahlen[c];
+            }
+
+            return result;
+        }
+    }
+}
+
 
 int get_linecount(char *filename) {
     int c = 0;

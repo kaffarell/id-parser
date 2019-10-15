@@ -13,7 +13,7 @@ int main(){
     printf("input value\n");
     //scanf("%d", &value);
     write("test", 5);
-    printf("value of id: %d\n", valueof_int("jake"));
+    printf("value of jake: %d\n", valueof_int("jake"));
     printf("value of name: %s\n", valueof_string("name"));
 
 
