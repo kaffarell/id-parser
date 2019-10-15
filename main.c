@@ -15,6 +15,7 @@ int main(){
     write("test", 5);
     printf("value of jake: %d\n", valueof_int("jake"));
     printf("value of name: %s\n", valueof_string("name"));
+    printf("value of float: %f \n", valueof_float("float"));
 
 
     return 0;
