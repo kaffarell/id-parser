@@ -228,3 +228,12 @@ void version_check(char* string){
     }
 }
 
+int* get_version(){
+    int* result;
+    printf("actual version: %d\n", actual_version[4]);
+    result[0] = (int)actual_version[0] - 48;
+    result[1] = (int)actual_version[2] - 48;
+    result[2] = (int)actual_version[4] - 48;
+    return result;
+}
+

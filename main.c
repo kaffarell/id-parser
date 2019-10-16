@@ -16,6 +16,7 @@ int main(){
     printf("value of jake: %d\n", valueof_int("jake"));
     printf("value of name: %s\n", valueof_string("name"));
     printf("value of float: %f \n", valueof_float("float"));
+    printf("version_first: %c\n", get_version()[0]);
 
 
     return 0;

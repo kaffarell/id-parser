@@ -61,7 +61,6 @@ void version_check(char* string);
 Returns the actual parser version in an int array f.e.: [0, 2, 3],
 can be used externally.
  */
-
 int* get_version();
 
 
