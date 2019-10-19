@@ -160,7 +160,9 @@ int valueof_int(char *id_input) {
 
 char* valueof_string(char *id_input){
     for (int i = 0; i < lines; i++) {
+        // See if identifier is in array
         if (strcmp(id_input, name_list[i]) == 0) {
+            // Return value
             return value_list[i];
         }
     }
@@ -172,6 +174,7 @@ float valueof_float(char *id_input){
     for (int i = 0; i < lines; i++) {
         if (strcmp(id_input, name_list[i]) == 0) {
             // Convert number from char* to integer
+            // Without atof it would be complicated
             result = atof(value_list[i]);
             return result;
         }
@@ -227,8 +230,10 @@ void version_check(char* string){
     }
 }
 
+// TODO: function is deprecated because now version_checker gets use
 int* get_version(){
     int *result;
+    // Actual Versions in an Array
     result[0] = actual_version[0];
     result[1] = actual_version[2];
     result[2] = actual_version[4];

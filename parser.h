@@ -58,6 +58,7 @@ version is same as parser version.
 void version_check(char* string);
 
 /*
+TODO: function is deprecated, substituted by version_checker
 Returns the actual parser version in an int array f.e.: [0, 2, 3],
 can be used externally.
  */

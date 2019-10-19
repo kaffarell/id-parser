@@ -9,6 +9,8 @@
 /home/gabriel/CLionProjects/id-parser/parser.c
 stdio.h
 -
+string.h
+-
 math.h
 -
 errno.h
