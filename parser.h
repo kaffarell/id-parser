@@ -11,7 +11,7 @@ extern char* name_list[5];
 extern char* value_list[5];
 
 // Stores the actual version number
-char* actual_version;
+int actual_version[];
 
 /*
 Write int values to the speciefied identifier

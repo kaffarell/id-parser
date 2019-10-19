@@ -9,7 +9,7 @@ char *name_list[];
 char *value_list[];
 int lines = 0;
 char *filename_global;
-char* actual_version =  "0.3.1";
+int actual_version[] = {0, 3, 1};
 
 
 FILE init(char filename[64]) {
@@ -56,7 +56,7 @@ void write(char* identifier, int value) {
     }
 
     // Write version tag with actual version
-    fprintf(write, ">version:%s\n\n", actual_version);
+    fprintf(write, ">version:%d.%d.%d\n\n", actual_version[0], actual_version[1], actual_version[2]);
     // Write whole array to file
     for(int c = 0; c < lines; c++){
         // Write array if not empty due to comments or tags
@@ -220,21 +220,19 @@ void version_check(char* string){
         }
     }
     // If version is not the same, output versions
-    if(!(strcmp(actual_version, version_string) == 0)){
+    if((int)version_string[0]-48 != actual_version[0] || (int)version_string[2]-48 != actual_version[1] || (int)version_string[4]-48 != actual_version[2]){
         printf("error - update parser or file\n");
-        printf("parser_version:%s\n", actual_version);
+        printf("parser_version:%d.%d.%d\n", actual_version[0], actual_version[1], actual_version[2]);
         printf("id-file_version:%s\n", version_string);
         exit(0);
     }
 }
 
 int* get_version(){
-    int* result;
-    printf("actual version: %d\n", actual_version[4]);
-    //FIXME segmentation fault result[0] = 0
-    result[0] = (int)actual_version[0] - 48;
-    result[1] = (int)actual_version[2] - 48;
-    result[2] = (int)actual_version[4] - 48;
+    int *result;
+    result[0] = actual_version[0];
+    result[1] = actual_version[2];
+    result[2] = actual_version[4];
     return result;
 }
 
