@@ -1,22 +1,21 @@
 #ifndef ID_PARSER_PARSER_H
 #define ID_PARSER_PARSER_H
 
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 
 FILE *file;
 
 // Lists of id's in file
-extern char* name_list[5];
-extern char* value_list[5];
+extern char* name_list[100];
+extern char* value_list[100];
 
-// Stores the actual version number
-int actual_version[];
 
 /*
 Write int values to the speciefied identifier
  */
-void write(char* identifier, int value);
+void write(char* identifier, void* value);
 
 /*
 Reads all the id's in the file.
@@ -51,18 +50,6 @@ is only used to read files in read(), calls read() automatically.
 */
 FILE init(char filename[64]);
 
-/*
-Not intendet to be used, gets used internally to check if id-file
-version is same as parser version.
- */
-void version_check(char* string);
-
-/*
-TODO: function is deprecated, substituted by version_checker
-Returns the actual parser version in an int array f.e.: [0, 2, 3],
-can be used externally.
- */
-int* get_version();
 
 
 #endif //ID_PARSER_PARSER_H

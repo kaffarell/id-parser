@@ -1,14 +1,13 @@
-#include<stdio.h>
-#include<string.h>
-#include<math.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
 #include <errno.h>
-#include"parser.h"
+#include "parser.h"
 
 char *name_list[];
 char *value_list[];
 int lines = 0;
 char *filename_global;
-int actual_version[] = {0, 3, 1};
 
 
 FILE init(char filename[64]) {
@@ -35,14 +34,14 @@ FILE init(char filename[64]) {
     read();
 }
 
-void write(char* identifier, int value) {
+void write(char* identifier, void* value) {
     // File pointer to write whole array to file
     FILE *write;
 
     // Searches in array for identifier and replaces their value
     for (int i = 0; i < lines; i++) {
         if (strcmp(identifier, name_list[i]) == 0) {
-            sprintf(value_list[i], "%d", value);
+            
         }
     }
     // Goes in write mode and cleares file
@@ -54,8 +53,6 @@ void write(char* identifier, int value) {
         exit(0);
     }
 
-    // Write version tag with actual version
-    fprintf(write, ">version:%d.%d.%d\n\n", actual_version[0], actual_version[1], actual_version[2]);
     // Write whole array to file
     for(int c = 0; c < lines; c++){
         // Write array if not empty due to comments or tags
@@ -82,14 +79,8 @@ void read() {
         memset(&name[0], 0, sizeof(name));
         memset(&value[0], 0, sizeof(value));
         getline(&string, (size_t *) &size, file);
-        // If line is version tag then call version check
-        if (string[0] == '>') {
-            // Check if version is up to date
-            version_check(string);
-            name_list[a] = "";
-            value_list[a] = "";
-            continue;
-        }else if(string[0] == 10){
+
+        if(string[0] == 10){
             name_list[a] = "";
             value_list[a] = "";
             continue;
@@ -208,35 +199,3 @@ int get_linecount(char *filename) {
 
     }
 }
-
-void version_check(char* string){
-    char version_string[5];
-
-    // Read versions in
-    for(int i = 0; i < 11; i++){
-        if(string[i] == 58){
-            i++;
-            for(int a = i; a < 14; a++){
-                version_string[a-i] = string[a];
-            }
-        }
-    }
-    // If version is not the same, output versions
-    if((int)version_string[0]-48 != actual_version[0] || (int)version_string[2]-48 != actual_version[1] || (int)version_string[4]-48 != actual_version[2]){
-        printf("error - update parser or file\n");
-        printf("parser_version:%d.%d.%d\n", actual_version[0], actual_version[1], actual_version[2]);
-        printf("id-file_version:%s\n", version_string);
-        exit(0);
-    }
-}
-
-// TODO: function is deprecated because now version_checker gets use
-int* get_version(){
-    int *result;
-    // Actual Versions in an Array
-    result[0] = actual_version[0];
-    result[1] = actual_version[2];
-    result[2] = actual_version[4];
-    return result;
-}
-

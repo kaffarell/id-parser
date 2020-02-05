@@ -1,3 +1,0 @@
-/home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles/id_parser.dir
-/home/gabriel/CLionProjects/id-parser/cmake-build-debug/CMakeFiles/edit_cache.dir

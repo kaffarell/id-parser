@@ -70,3 +70,4 @@ File: constants.id
     constant = pi
 
     
+### Compile with gcc parser.c main.c -lm
