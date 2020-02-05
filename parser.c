@@ -34,14 +34,14 @@ FILE init(char filename[64]) {
     read();
 }
 
-void write(char* identifier, void* value) {
+void write(char* identifier, int value) {
     // File pointer to write whole array to file
     FILE *write;
 
     // Searches in array for identifier and replaces their value
     for (int i = 0; i < lines; i++) {
         if (strcmp(identifier, name_list[i]) == 0) {
-            
+            value_list[i] = value;
         }
     }
     // Goes in write mode and cleares file

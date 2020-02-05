@@ -15,7 +15,7 @@ extern char* value_list[100];
 /*
 Write int values to the speciefied identifier
  */
-void write(char* identifier, void* value);
+void write(char* identifier, int value);
 
 /*
 Reads all the id's in the file.
